@@ -1,0 +1,81 @@
+"use client";
+import { gsap } from "gsap";
+import React, { useEffect } from "react";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger, SplitText } from "@/plugins";
+gsap.registerPlugin(ScrollTrigger, SplitText);
+
+// ==================== YECO REPORTS LIST PAGE ====================
+// Header: header-one
+import HeaderOne from "@/layouts/headers/header-one";
+
+// Reports Banner Slider (报告精选轮播)
+import ReportsBannerSlider from "@/components/reports/reports-banner-slider";
+
+// Reports Grid (报告网格组件 - 带翻页)
+import ReportsGridArea from "@/components/reports/reports-grid-area";
+
+// Footer: footer-4 (深色主题)
+import FooterFour from "@/layouts/footers/footer-four";
+
+// animation
+import { charAnimation, fadeAnimation, zoomAnimation } from "@/utils/title-animation";
+
+const ReportsListMain = () => {
+  useEffect(() => {
+    document.body.classList.add("tp-smooth-scroll");
+    return () => {
+      document.body.classList.remove("tp-smooth-scroll");
+    };
+  }, []);
+
+  useGSAP(() => {
+    const timer = setTimeout(() => {
+      charAnimation();
+      fadeAnimation();
+      zoomAnimation();
+    }, 100);
+    return () => clearTimeout(timer);
+  });
+
+  return (
+    <div>
+      {/* ==================== HEADER ==================== */}
+      <HeaderOne />
+
+      <main>
+        {/* ==================== REPORTS SLIDER ==================== */}
+        <ReportsBannerSlider />
+
+        {/* ==================== HERO SECTION ==================== */}
+        <div className="tm-hero-area tm-hero-ptb" style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-12">
+                <div className="tm-hero-content">
+                  <span className="tm-hero-subtitle" style={{ marginBottom: '30px', display: 'block' }}>YECO Studio</span>
+                  <h4 className="tm-hero-title tp-char-animation" style={{ fontSize: '120px' }}>
+                    深度趋势研究
+                  </h4>
+                </div>
+                <div className="tm-hero-text tp_title_anim">
+                  <p>
+                    基于全球社交平台的消费者洞察，行业设计数据研究，揭示香水行业的最新趋势与设计方向。深入Reddit、Instagram、TikTok等平台用户声音，将海量数据转化为可落地的设计策略。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ==================== REPORTS GRID ==================== */}
+        <ReportsGridArea />
+      </main>
+
+      {/* ==================== FOOTER ==================== */}
+      <FooterFour />
+    </div>
+  );
+};
+
+export default ReportsListMain;

@@ -1,0 +1,400 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  3.1 Header Style 1
+/*----------------------------------------*/
+.container{
+    transition: all 1s;
+}
+.tp-transparent{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+.header-sticky{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    width: 100%;
+    z-index: 999;
+    visibility: visible;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 1px 3px 0px rgba(18, 20, 32, 0.14);
+    -webkit-animation: 0.95s ease 0s normal forwards 1 running headerSlideDown;
+    animation: 0.95s ease 0s normal forwards 1 running headerSlideDown;
+    & .ab-logo-1{
+        display: none;
+    }
+    & .ab-logo-2{
+        display: block;
+    }
+    &::after{
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(10px);
+        z-index: -1;
+    }
+}
+.ab-logo-2{
+    display: none;
+}
+
+.tp-header-style-9{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.logo-2{
+    display: none;
+}
+.tp-header{
+    &-logo{
+        & img{
+            width: 85px !important;
+            height: 100% !important;
+        }
+    }
+    &-area{
+        &.header-sticky{
+            & .container{
+                max-width: 100%;
+            }
+            & .tp-header-menu > nav > ul > li > a {
+                padding: 27px 0;
+            }
+        }
+    }
+}
+.tp-header{
+    &-mob-space{
+        @media #{$lg,$md,$xs}{
+            padding: 20px 0px;
+        }
+    }
+    &-area{
+        @media #{$xl}{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        @media #{$lg,$md,$xs}{
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    }
+    &-menu{
+        & > nav{
+            & > ul{
+                & > li{
+                    display: inline-block;
+                    list-style-type: none;
+                    margin: 0px 25px;
+                    & > a{
+                        padding: 40px 0;
+                        display: inline-block;
+                        font-weight: 500;
+                        font-size: 16px;
+                        line-height: 1;
+                        text-transform: uppercase;
+                        color: var(--tp-common-black);
+                        font-family: var(--tp-ff-noto-serif-sc), serif;
+                    }
+                }
+            }
+        }
+    }
+    &-bar{
+        line-height: 0;
+        // 只针对汉堡菜单按钮的样式
+        & .tp-offcanvas-open-btn{
+            & span{
+                height: 2px;
+                width: 40px;
+                background-color: var(--tp-common-black);
+                display: block;
+                margin: 6px 0;
+            }
+            &:hover{
+                & span{
+                    animation: bar_anim 0.8s cubic-bezier(0.44, 1.1, 0.53, 0.99) 1 forwards;
+                    &:nth-child(2) {
+                        animation-delay: 0.1s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*----------------------------------------*/
+/*  YECO Custom Styles
+/*----------------------------------------*/
+
+/* Logo Text - 黑白切换（根据主题模式） */
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--tp-common-black);  // 默认黑色
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    display: inline-block;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+/* Sticky header 时使用黑色 */
+.header-sticky .logo-text {
+    color: var(--tp-common-black);
+}
+
+/* 语言切换器 - 横向排列，斜线分隔 */
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* 地球图标样式 */
+.lang-globe-icon {
+    color: var(--tp-common-black);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.lang-item {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--tp-common-black);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    white-space: nowrap;  // 防止文字换行
+
+    &:hover {
+        opacity: 0.6;
+    }
+
+    &.active {
+        font-weight: 600;
+    }
+
+    &:not(:last-child)::after {
+        content: '/';
+        margin: 0 8px;  // 左右对称的间距
+        color: var(--tp-common-black);
+        opacity: 0.3;
+    }
+}
+
+/* Sticky header 时语言按钮使用黑色 */
+.header-sticky .lang-item {
+    color: var(--tp-common-black);
+
+    &:not(:last-child)::after {
+        color: var(--tp-common-black);
+    }
+}
+
+/* 移动端语言切换器 - 简化版 */
+.language-switcher-mobile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 移动端地球图标样式 */
+.lang-globe-icon-mobile {
+    color: var(--tp-common-black);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.lang-item-mobile {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--tp-common-black);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    white-space: nowrap;  // 防止文字换行
+
+    &:hover {
+        opacity: 0.6;
+    }
+
+    &.active {
+        font-weight: 600;
+    }
+}
+
+/* Sticky header 时移动端语言按钮使用黑色 */
+.header-sticky .lang-item-mobile {
+    color: var(--tp-common-black);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 1.25rem;
+    }
+
+    .lang-item-mobile {
+        font-size: 13px;
+    }
+}
+
+/* Hero Banner 中文字体优化 */
+/* 调整 banner 区域的底部间距，解决内容缩减后的高度问题 */
+.tp-hero-3-ptb {
+    padding-bottom: 120px !important;  // 增加底部 padding (从 70px 到 120px)
+
+    @media (max-width: 768px) {
+        padding-bottom: 80px !important;  // 移动端也相应增加
+    }
+}
+
+.tp-hero-3-title {
+    font-family: var(--tp-ff-noto-serif-sc), var(--tp-ff-marcellus), serif !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.05em !important;
+    font-size: 100px !important;  // 缩小主标题
+
+    @media (max-width: 1200px) {
+        font-size: 85px !important;
+    }
+
+    @media (max-width: 992px) {
+        font-size: 70px !important;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 50px !important;
+    }
+}
+
+.tp-hero-3-description {
+    font-family: var(--tp-ff-noto-serif-sc), var(--tp-ff-body), sans-serif !important;
+    font-size: 28px !important;  // 放大描述文字
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--tp-common-black);
+    margin-bottom: 40px;
+    margin-top: 60px !important;  // 扩大间距一倍 (从 30px 到 60px)
+    opacity: 0.9;
+
+    @media (max-width: 1200px) {
+        font-size: 24px !important;
+        margin-top: 50px !important;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 20px !important;
+        line-height: 1.6;
+        margin-top: 40px !important;  // 移动端也扩大间距 (从 20px 到 40px)
+        margin-bottom: 30px;
+    }
+}
+
+/* 修复背景渐变圆形在手机端的尺寸问题 */
+.tp-hero-3-circle-shape span {
+    @media (max-width: 767px) {
+        height: 300px !important;  // 手机端缩小圆形
+        width: 300px !important;
+    }
+}
+
+/* About区域标题容器 - 左对齐 */
+.tp-about-3-title-box {
+    text-align: left !important;
+}
+
+/* About区域副标题 - 左对齐并取消左边距 */
+.tp-about-3-title-box .tp-section-subtitle-2 {
+    margin-left: 0 !important;
+    display: block !important;
+    text-align: left !important;
+    position: relative !important;
+    margin-bottom: 20px !important;
+}
+
+/* 副标题下方装饰线 */
+.tp-about-3-title-box .tp-section-subtitle-2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100%;
+    max-width: 180px;  /* 大约是 "Design Philosophy" 的宽度 */
+    height: 1px;
+    background-color: var(--tp-common-black);
+    opacity: 0.3;
+}
+
+/* 深色模式下装饰线颜色 */
+[data-theme='dark'] .tp-about-3-title-box .tp-section-subtitle-2::after {
+    background-color: var(--tp-common-white);
+}
+
+/* About区域主标题 - 使用思源宋体并左对齐 */
+.tp-about-3-title-box .tp-section-title-90 {
+    font-family: var(--tp-ff-noto-serif-sc), var(--tp-ff-marcellus), serif !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.08em !important;
+    text-align: left !important;
+    margin-top: 30px !important;  /* 给装饰线留出空间 */
+}
+
+/* About区域正文内容 - 使用思源宋体 */
+.tp-about-3-content p {
+    font-family: var(--tp-ff-noto-serif-sc), var(--tp-ff-body), serif !important;
+    font-size: 18px !important;
+    line-height: 1.8 !important;
+    font-weight: 400 !important;
+
+    @media (max-width: 768px) {
+        font-size: 16px !important;
+    }
+}
+
+/* ==================== Hero Banner 3 Spline 背景修复 ==================== */
+
+/* 确保 Hero Banner 区域完全填充，消除底部空隙 */
+.tp-hero-3-area {
+    min-height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* 移除可能导致空隙的内边距 */
+.tp-hero-3-ptb {
+    padding-bottom: 0 !important;
+}
+
+/* Spline 背景层完全填充父容器 */
+.tp-hero-3-area > div:first-child {
+    min-height: 100vh !important;
+}

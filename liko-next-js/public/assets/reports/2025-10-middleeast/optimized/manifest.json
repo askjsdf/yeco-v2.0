@@ -1,0 +1,801 @@
+{
+  "generatedAt": "2025-11-13T01:06:05.189Z",
+  "totalImages": 31,
+  "totalOriginalSize": 42994862,
+  "totalOptimizedSize": 3955332,
+  "totalSavings": 39039530,
+  "savingsPercent": "90.8",
+  "images": [
+    {
+      "original": "29.png",
+      "optimized": [
+        {
+          "path": "optimized/29-small.webp",
+          "size": 19462,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/29-large.webp",
+          "size": 24302,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/29.webp",
+          "size": 24302,
+          "width": 736,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "28.png",
+      "optimized": [
+        {
+          "path": "optimized/28-small.webp",
+          "size": 37622,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/28-large.webp",
+          "size": 46344,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/28.webp",
+          "size": 46344,
+          "width": 736,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "27.png",
+      "optimized": [
+        {
+          "path": "optimized/27-small.webp",
+          "size": 67188,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/27-medium.webp",
+          "size": 132232,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/27-large.webp",
+          "size": 168756,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/27.webp",
+          "size": 168756,
+          "width": 1200,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "26.png",
+      "optimized": [
+        {
+          "path": "optimized/26-small.webp",
+          "size": 97024,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/26-large.webp",
+          "size": 104764,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/26.webp",
+          "size": 104764,
+          "width": 658,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "25.png",
+      "optimized": [
+        {
+          "path": "optimized/25-small.webp",
+          "size": 92308,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/25-large.webp",
+          "size": 97998,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/25.webp",
+          "size": 97998,
+          "width": 675,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "24.png",
+      "optimized": [
+        {
+          "path": "optimized/24-small.webp",
+          "size": 48444,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/24-large.webp",
+          "size": 58672,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/24.webp",
+          "size": 58672,
+          "width": 736,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "23.png",
+      "optimized": [
+        {
+          "path": "optimized/23-small.webp",
+          "size": 34302,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/23-medium.webp",
+          "size": 66108,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/23-large.webp",
+          "size": 73504,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/23.webp",
+          "size": 73504,
+          "width": 1080,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "22.png",
+      "optimized": [
+        {
+          "path": "optimized/22-small.webp",
+          "size": 26304,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/22-medium.webp",
+          "size": 79656,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/22-large.webp",
+          "size": 375360,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/22.webp",
+          "size": 375360,
+          "width": 1920,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "21.png",
+      "optimized": [
+        {
+          "path": "optimized/21-small.webp",
+          "size": 132104,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/21-large.webp",
+          "size": 149850,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/21.webp",
+          "size": 149850,
+          "width": 680,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "20.png",
+      "optimized": [
+        {
+          "path": "optimized/20-small.webp",
+          "size": 168856,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/20-large.webp",
+          "size": 203756,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/20.webp",
+          "size": 203756,
+          "width": 736,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "19.png",
+      "optimized": [
+        {
+          "path": "optimized/19-small.webp",
+          "size": 75544,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/19-medium.webp",
+          "size": 193790,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/19-large.webp",
+          "size": 261720,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/19.webp",
+          "size": 261720,
+          "width": 1200,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "18.png",
+      "optimized": [
+        {
+          "path": "optimized/18-small.webp",
+          "size": 36348,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/18-large.webp",
+          "size": 42674,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/18.webp",
+          "size": 42674,
+          "width": 736,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "18 (2).png",
+      "optimized": [
+        {
+          "path": "optimized/18 (2)-small.webp",
+          "size": 51246,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/18 (2)-medium.webp",
+          "size": 110852,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/18 (2)-large.webp",
+          "size": 276456,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/18 (2).webp",
+          "size": 368336,
+          "width": 2560,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "17 (2).png",
+      "optimized": [
+        {
+          "path": "optimized/17 (2)-small.webp",
+          "size": 10226,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/17 (2)-medium.webp",
+          "size": 19122,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/17 (2)-large.webp",
+          "size": 43492,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/17 (2).webp",
+          "size": 57336,
+          "width": 2560,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "16.jpg",
+      "optimized": [
+        {
+          "path": "optimized/16-small.webp",
+          "size": 12502,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/16-medium.webp",
+          "size": 23260,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/16-large.webp",
+          "size": 58708,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/16.webp",
+          "size": 109066,
+          "width": 2911,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "15.png",
+      "optimized": [
+        {
+          "path": "optimized/15-small.webp",
+          "size": 13368,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/15-medium.webp",
+          "size": 25470,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/15-large.webp",
+          "size": 54974,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/15.webp",
+          "size": 85244,
+          "width": 2804,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "14.png",
+      "optimized": [
+        {
+          "path": "optimized/14-small.webp",
+          "size": 8794,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/14-large.webp",
+          "size": 9226,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/14.webp",
+          "size": 9226,
+          "width": 679,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "13.png",
+      "optimized": [
+        {
+          "path": "optimized/13-small.webp",
+          "size": 72394,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/13-large.webp",
+          "size": 88024,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/13.webp",
+          "size": 88024,
+          "width": 736,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "12.png",
+      "optimized": [
+        {
+          "path": "optimized/12-small.webp",
+          "size": 64402,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/12-large.webp",
+          "size": 84384,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/12.webp",
+          "size": 84384,
+          "width": 736,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "11.png",
+      "optimized": [
+        {
+          "path": "optimized/11-small.webp",
+          "size": 74724,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/11-medium.webp",
+          "size": 183684,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/11-large.webp",
+          "size": 244316,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/11.webp",
+          "size": 244316,
+          "width": 1200,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "10现代极简.png",
+      "optimized": [
+        {
+          "path": "optimized/10现代极简-large.webp",
+          "size": 17716,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/10现代极简.webp",
+          "size": 17716,
+          "width": 640,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "09经典.png",
+      "optimized": [
+        {
+          "path": "optimized/09经典-small.webp",
+          "size": 76882,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/09经典-medium.webp",
+          "size": 145292,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/09经典-large.webp",
+          "size": 177322,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/09经典.webp",
+          "size": 177322,
+          "width": 1200,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "08雕塑感与独特性.png",
+      "optimized": [
+        {
+          "path": "optimized/08雕塑感与独特性-small.webp",
+          "size": 53798,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/08雕塑感与独特性-large.webp",
+          "size": 110740,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/08雕塑感与独特性.webp",
+          "size": 110740,
+          "width": 1000,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "07神话.png",
+      "optimized": [
+        {
+          "path": "optimized/07神话-small.webp",
+          "size": 93762,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/07神话-medium.webp",
+          "size": 162150,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/07神话-large.webp",
+          "size": 198630,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/07神话.webp",
+          "size": 198630,
+          "width": 1200,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "06.png",
+      "optimized": [
+        {
+          "path": "optimized/06-small.webp",
+          "size": 23242,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/06-medium.webp",
+          "size": 42182,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/06-large.webp",
+          "size": 48734,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/06.webp",
+          "size": 48734,
+          "width": 1125,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "05.png",
+      "optimized": [
+        {
+          "path": "optimized/05-small.webp",
+          "size": 60318,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/05-large.webp",
+          "size": 103308,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/05.webp",
+          "size": 103308,
+          "width": 975,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "04.png",
+      "optimized": [
+        {
+          "path": "optimized/04-small.webp",
+          "size": 58916,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/04-large.webp",
+          "size": 82672,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/04.webp",
+          "size": 82672,
+          "width": 841,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "03设计美学.png",
+      "optimized": [
+        {
+          "path": "optimized/03设计美学-large.webp",
+          "size": 14754,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/03设计美学.webp",
+          "size": 14754,
+          "width": 600,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "02核心洞察配图2方案图.png",
+      "optimized": [
+        {
+          "path": "optimized/02核心洞察配图2方案图-small.webp",
+          "size": 43026,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/02核心洞察配图2方案图-medium.webp",
+          "size": 94694,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/02核心洞察配图2方案图-large.webp",
+          "size": 161754,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/02核心洞察配图2方案图.webp",
+          "size": 161754,
+          "width": 1456,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "02核心洞察配图1网图.png",
+      "optimized": [
+        {
+          "path": "optimized/02核心洞察配图1网图-small.webp",
+          "size": 13946,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/02核心洞察配图1网图-medium.webp",
+          "size": 27208,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/02核心洞察配图1网图-large.webp",
+          "size": 68828,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/02核心洞察配图1网图.webp",
+          "size": 219344,
+          "width": 3798,
+          "main": true
+        }
+      ]
+    },
+    {
+      "original": "01主视觉.png",
+      "optimized": [
+        {
+          "path": "optimized/01主视觉-small.webp",
+          "size": 46984,
+          "width": 640,
+          "main": false
+        },
+        {
+          "path": "optimized/01主视觉-medium.webp",
+          "size": 96928,
+          "width": 1024,
+          "main": false
+        },
+        {
+          "path": "optimized/01主视觉-large.webp",
+          "size": 166726,
+          "width": 1920,
+          "main": false
+        },
+        {
+          "path": "optimized/01主视觉.webp",
+          "size": 166726,
+          "width": 1610,
+          "main": true
+        }
+      ]
+    }
+  ]
+}
