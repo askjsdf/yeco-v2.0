@@ -12,6 +12,7 @@
 # next.js
 /.next/
 /out/
+/liko-next-js/.next/
 
 # production
 /build
@@ -34,3 +35,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Source files (PDFs, research materials)
+*.pdf
+/研究资料/
+/源文件/
