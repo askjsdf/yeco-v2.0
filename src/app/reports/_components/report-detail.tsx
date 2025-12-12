@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { useEffect, useMemo } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger, SplitText } from "@/plugins";
-import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -15,11 +14,14 @@ import HeaderOne from "@/layouts/headers/header-one";
 // Footer: footer-4 (深色主题)
 import FooterFour from "@/layouts/footers/footer-four";
 
+// Contact Section
+import ContactTwo from "@/components/contact/contact-two";
+
 // animation
 import { charAnimation, fadeAnimation } from "@/utils/title-animation";
 
 // data
-import { getReportBySlug, getAllReports } from "../_data/reports-data";
+import { getReportBySlug } from "../_data/reports-data";
 
 // Props 接口 - 支持从 App Router 传入 slug
 interface ReportDetailPageProps {
@@ -93,13 +95,6 @@ const ReportDetailPage = ({ slug: propSlug }: ReportDetailPageProps) => {
   // 获取当前报告数据
   const report = slug ? getReportBySlug(slug as string) : null;
 
-  // 获取相关报告（同分类的其他报告）
-  const relatedReports = report
-    ? getAllReports()
-        .filter(r => r.category === report.category && r.id !== report.id)
-        .slice(0, 3)
-    : [];
-
   useEffect(() => {
     document.body.classList.add("tp-smooth-scroll");
     return () => {
@@ -147,8 +142,8 @@ const ReportDetailPage = ({ slug: propSlug }: ReportDetailPageProps) => {
             style={{
               display: 'inline-block',
               padding: '15px 40px',
-              background: '#D4AF37',
-              color: '#000',
+              background: '#ffffffff',
+              color: '#000000ff',
               textDecoration: 'none',
               borderRadius: '4px',
               fontWeight: 600,
@@ -158,64 +153,51 @@ const ReportDetailPage = ({ slug: propSlug }: ReportDetailPageProps) => {
           </Link>
         </div>
 
-        {/* ==================== RELATED REPORTS ==================== */}
-        {relatedReports.length > 0 && (
-          <div className="related-reports-area pb-120" style={{ background: '#f9f9f9' }}>
-            <div className="container">
-              <div className="row">
-                <div className="col-xl-12">
-                  <h3 style={{ marginBottom: '50px', paddingTop: '80px', fontSize: '32px' }}>
-                    相关报告
-                  </h3>
+        {/* ==================== CONTACT SECTION ==================== */}
+        {/* 联系我们标题 */}
+        <div className="tm-hero-area tm-hero-ptb p-relative" style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
+          <style jsx>{`
+            .contact-title {
+              font-size: 120px;
+              letter-spacing: 0.05em;
+            }
+            @media (max-width: 991px) {
+              .contact-title {
+                font-size: 72px;
+                letter-spacing: 0.08em;
+              }
+            }
+            @media (max-width: 767px) {
+              .contact-title {
+                font-size: 48px;
+                letter-spacing: 0.1em;
+              }
+            }
+            @media (max-width: 480px) {
+              .contact-title {
+                font-size: 36px;
+                letter-spacing: 0.12em;
+              }
+            }
+          `}</style>
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-12">
+                <div className="tm-hero-content">
+                  <span className="tm-hero-subtitle" style={{ marginBottom: '30px', display: 'block' }}>YECO Studio</span>
+                  <h4 className="tm-hero-title-big tp-char-animation contact-title" style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
+                    建立连结，共创非凡
+                  </h4>
                 </div>
-              </div>
-              <div className="row">
-                {relatedReports.map((item) => (
-                  <div key={item.id} className="col-xl-4 col-lg-4 col-md-6 mb-30">
-                    <Link href={`/reports/${item.slug}`} style={{ textDecoration: 'none' }}>
-                      <div
-                        style={{
-                          background: '#fff',
-                          borderRadius: '8px',
-                          overflow: 'hidden',
-                          transition: 'transform 0.3s ease',
-                        }}
-                        className="related-report-card"
-                      >
-                        <div style={{ position: 'relative', paddingTop: '60%', background: '#eee' }}>
-                          <Image
-                            src={item.coverImage}
-                            alt={item.title}
-                            fill
-                            style={{ objectFit: 'cover' }}
-                          />
-                        </div>
-                        <div style={{ padding: '20px' }}>
-                          <span style={{ color: '#999', fontSize: '14px' }}>
-                            {item.category} · {item.year}.{item.month}
-                          </span>
-                          <h4 style={{ marginTop: '10px', fontSize: '18px', color: '#1a1a1a' }}>
-                            {item.title}
-                          </h4>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
-        )}
+        </div>
+        <ContactTwo />
       </main>
 
       {/* ==================== FOOTER ==================== */}
       <FooterFour />
-
-      <style jsx>{`
-        .related-report-card:hover {
-          transform: translateY(-5px);
-        }
-      `}</style>
     </div>
   );
 };

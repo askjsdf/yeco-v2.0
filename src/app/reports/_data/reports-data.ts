@@ -424,6 +424,20 @@ const reports_data: IReportItem[] = [
     date: "2022-02-10",
     description: "分析香水包装中字体设计的趋势和品牌表达方式。",
   },
+  {
+    id: 31,
+    slug: "2025-12-us-beauty-ipfication",
+    title: "美国美妆与香氛市场IP化与包装玩具化趋势",
+    subtitle: "2024-2026深度战略报告",
+    category: "消费者洞察",
+    coverImage: "/assets/reports/2025-12-us-beauty-ipfication/cover.jpg",
+    bannerImage: "/assets/reports/2025-12-us-beauty-ipfication/banner.jpg",
+    year: "2025",
+    month: "12",
+    date: "2025-12-09",
+    description: "揭示美妆行业从极简实用性向高情感物质性的范式转移,深度解析大小孩经济、包装玩具化与IP化战略的融合趋势。",
+  },
+
 ];
 
 // 获取精选报告（用于 Banner 轮播，按时间排序取最新5篇）
