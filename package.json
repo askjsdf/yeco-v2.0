@@ -17,6 +17,7 @@
     "@popperjs/core": "^2.11.8",
     "@splinetool/react-spline": "^4.1.0",
     "@splinetool/runtime": "^1.12.6",
+    "@vercel/analytics": "^1.6.1",
     "bootstrap": "^5.3.8",
     "gsap": "^3.13.0",
     "imagesloaded": "^5.0.0",

@@ -10,6 +10,7 @@ import { VideoProvider } from "@/provider/VideoProvider";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from "@vercel/analytics/react";
 import "swiper/css/bundle";
 import "./globals.scss";
 
@@ -113,6 +114,7 @@ export default function RootLayout({
             </VideoProvider>
           </ThemeProvider>
         </LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
