@@ -1,27 +1,33 @@
+'use client';
 import React, { CSSProperties } from 'react';
 import Image from 'next/image';
 import Marquee from 'react-fast-marquee';
-// images
+import { useLanguage } from '@/i18n/LanguageContext';
+// shape images
 import shape_1 from '@/assets/img/home-03/gallery/gal-shape-1.png';
 import shape_d_1 from '@/assets/img/home-03/gallery/gal-shape-dark-1.png';
 import shape_2 from '@/assets/img/home-03/gallery/gal-shape-2.png';
 import shape_d_2 from '@/assets/img/home-03/gallery/gal-shape-dark-2.png';
-import g_1 from '@/assets/img/home-03/gallery/gal-1.jpg';
-import g_2 from '@/assets/img/home-03/gallery/gal-2.jpg';
-import g_3 from '@/assets/img/home-03/gallery/gal-3.jpg';
-import g_4 from '@/assets/img/home-03/gallery/gal-4.jpg';
-import g_5 from '@/assets/img/home-03/gallery/gal-5.jpg';
 
 
 const gallery_images = [
-  g_1, g_2, g_3, g_4, g_5, g_3, g_1, g_2, g_3, g_4, g_5, g_3
+  '/assets/img/home-03/gallery/gallery1.jpg',
+  '/assets/img/home-03/gallery/gallery2.jpg',
+  '/assets/img/home-03/gallery/gallery3.jpg',
+  '/assets/img/home-03/gallery/gallery4.jpg',
+  '/assets/img/home-03/gallery/gallery5.jpg',
+  '/assets/img/home-03/gallery/gallery6.jpg',
+  '/assets/img/home-03/gallery/gallery7.jpg',
+  '/assets/img/home-03/gallery/gallery8.jpg',
 ]
 
 const imgStyle:CSSProperties = {height: "auto"};
 
 export default function GalleryOne() {
+  const { isRTL } = useLanguage();
+
   return (
-    <div className="tp-gallery-area fix p-relative" style={{ backgroundColor: '#000000' }}>
+    <div className="tp-gallery-area fix p-relative" style={{ backgroundColor: '#000000', direction: 'ltr' }}>
       <div className="tp-gallery-shape-1">
         <Image className="img-1" src={shape_1} alt="shape" style={imgStyle} />
         <Image className="img-2" src={shape_d_1} alt="shape" style={imgStyle} />
@@ -35,17 +41,15 @@ export default function GalleryOne() {
           <div className="col-xl-12">
             <div className="tp-gallery-slider-wrap">
               <div className="swiper-container tp-gallery-slider-active">
-                <Marquee className="tp-gallery-titming" speed={100} direction='left'>
-
-                  {gallery_images.map((g, i) => (
-
-                    <div key={i}>
-                      <div className="tp-gallery-item mr-30">
-                        <Image src={g} alt="gallery-img" style={{ height: '735px', width: 'auto', objectFit: 'cover' }} />
-                      </div>
-                    </div>
+                <Marquee className="tp-gallery-titming" speed={100} direction={isRTL ? 'right' : 'left'} autoFill>
+                  {gallery_images.map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt={`gallery-img-${i}`}
+                      style={{ height: '735px', width: 'auto', marginRight: '30px' }}
+                    />
                   ))}
-
                 </Marquee>
               </div>
             </div>

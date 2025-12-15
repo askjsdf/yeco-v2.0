@@ -3,10 +3,12 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { useTheme } from 'next-themes';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function PerfumeBottle3D() {
   const mountRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
+  const { isRTL } = useLanguage();
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -79,23 +81,25 @@ export default function PerfumeBottle3D() {
         console.log('Model center:', center);
 
         // 根据屏幕宽度动态调整模型位置和缩放
+        // RTL 模式下镜像 X 轴偏移
+        const rtlMultiplier = isRTL ? -1 : 1;
         let xOffset = 0;
         let yOffset = 0;
         let scaleMultiplier = 1.2; // 默认手机端
 
         if (width >= 1400) {
-          // 大屏桌面端 (>=1400px): 向左偏移较多
-          xOffset = -2.0;
+          // 大屏桌面端 (>=1400px): 向左偏移较多 (RTL时向右)
+          xOffset = -2.0 * rtlMultiplier;
           yOffset = 0;
           scaleMultiplier = 2.5;
         } else if (width >= 1200) {
-          // 中屏桌面端 (1200px-1399px): 向左偏移较少
-          xOffset = -1.0;
+          // 中屏桌面端 (1200px-1399px): 向左偏移较少 (RTL时向右)
+          xOffset = -1.0 * rtlMultiplier;
           yOffset = 0;
           scaleMultiplier = 2.2;
         } else if (width >= 768) {
-          // 平板端 (768px-1199px): 向左偏移,中等大小
-          xOffset = -0.8;
+          // 平板端 (768px-1199px): 向左偏移,中等大小 (RTL时向右)
+          xOffset = -0.8 * rtlMultiplier;
           yOffset = 0;
           scaleMultiplier = 1.6;
         } else {
@@ -175,23 +179,25 @@ export default function PerfumeBottle3D() {
       renderer.setSize(newWidth, newHeight);
 
       // 根据屏幕宽度动态调整模型位置和缩放
+      // RTL 模式下镜像 X 轴偏移
+      const rtlMultiplier = isRTL ? -1 : 1;
       let xOffset = 0;
       let yOffset = 0;
       let scaleMultiplier = 1.2;
 
       if (newWidth >= 1400) {
         // 大屏桌面端
-        xOffset = -2.0;
+        xOffset = -2.0 * rtlMultiplier;
         yOffset = 0;
         scaleMultiplier = 2.5;
       } else if (newWidth >= 1200) {
         // 中屏桌面端
-        xOffset = -1.0;
+        xOffset = -1.0 * rtlMultiplier;
         yOffset = 0;
         scaleMultiplier = 2.2;
       } else if (newWidth >= 768) {
         // 平板端
-        xOffset = -0.8;
+        xOffset = -0.8 * rtlMultiplier;
         yOffset = 0;
         scaleMultiplier = 1.6;
       } else {
@@ -244,7 +250,7 @@ export default function PerfumeBottle3D() {
       lineMaterial.dispose();
       renderer.dispose();
     };
-  }, [theme]); // 主题变化时重新渲染
+  }, [theme, isRTL]); // 主题或语言方向变化时重新渲染
 
   return (
     <div

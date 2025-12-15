@@ -1,8 +1,24 @@
+'use client';
 import React from "react";
 import { scroller } from "react-scroll";
 import { ScrollDown } from "../svg";
+import { useTranslation } from "@/i18n/hooks/useTranslation";
 
 export default function AboutYecoHero() {
+  const { t, isRTL } = useTranslation();
+
+  // RTL 模式下竖条装饰线样式调整
+  const subtitleStyle: React.CSSProperties = isRTL ? {
+    paddingLeft: 0,
+    paddingRight: '14px',
+  } : { marginBottom: '20px', display: 'block' };
+
+  // RTL 模式下滚动提示位置调整
+  const scrollStyle: React.CSSProperties = isRTL ? {
+    left: '60px',
+    right: 'auto',
+  } : {};
+
   const scrollTo = () => {
     scroller.scrollTo('about-info', {
       duration: 800,
@@ -19,12 +35,12 @@ export default function AboutYecoHero() {
       }}
     >
       <div className="breadcurmb-site d-none">
-        <h6>关于YECO</h6>
+        <h6>{t.about.hero.breadcrumb}</h6>
       </div>
-      <div className="ab-inner-hero-scroll smooth">
+      <div className="ab-inner-hero-scroll smooth" style={scrollStyle}>
         <a className="pointer" onClick={scrollTo}>
           <span>
-            向下滚动探索
+            {t.about.hero.scrollHint}
             <ScrollDown />
           </span>
         </a>
@@ -37,13 +53,27 @@ export default function AboutYecoHero() {
               data-lag="0.2"
               data-stagger="0.08"
             >
-              <span className="ab-inner-hero-subtitle" style={{ marginBottom: '20px', display: 'block' }}>
-                香水包装设计制造专家
+              <span
+                className={isRTL ? '' : 'ab-inner-hero-subtitle'}
+                style={isRTL ? {
+                  fontSize: '15px',
+                  fontWeight: 600,
+                  lineHeight: 1.2,
+                  textTransform: 'uppercase' as const,
+                  color: '#fff',
+                  display: 'inline-block',
+                  position: 'relative' as const,
+                  paddingRight: '14px',
+                  marginBottom: '20px',
+                  borderRight: '2px solid #fff',
+                } : { marginBottom: '20px', display: 'block' }}
+              >
+                {t.about.hero.subtitle}
               </span>
               <h1 className="ab-inner-hero-title tp-char-animation" style={{ fontSize: '84px' }}>
-                世界文化交融的设计力量
+                {t.about.hero.title}
               </h1>
-              <p>以东方美学融合全球视野，创造触动人心的包装设计</p>
+              <p>{t.about.hero.tagline}</p>
             </div>
           </div>
         </div>
@@ -55,7 +85,7 @@ export default function AboutYecoHero() {
               data-stagger="0.08"
             >
               <p>
-                YECO专注于香水包装设计领域，为全球品牌提供从创意设计到生产制造的全链路设计服务
+                {t.about.hero.description}
               </p>
             </div>
           </div>

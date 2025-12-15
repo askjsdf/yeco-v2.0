@@ -1,9 +1,12 @@
+"use client";
 import React from "react";
-import ReportsListMain from "@/pages/reports/reports-list";
+import dynamic from "next/dynamic";
 
-export const metadata = {
-  title: "趋势报告 - YECO",
-};
+// 动态导入客户端组件，禁用 SSR 以避免 LanguageProvider 问题
+const ReportsListMain = dynamic(
+  () => import("@/pages/reports/reports-list"),
+  { ssr: false }
+);
 
 export default function ReportsListPage() {
   return <ReportsListMain />;

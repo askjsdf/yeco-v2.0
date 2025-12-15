@@ -1,6 +1,8 @@
+'use client';
 import React from "react";
 import Image from "next/image";
 import { Hand } from "../svg";
+import { useTranslation } from "@/i18n/hooks/useTranslation";
 
 // images
 import shape from "@/assets/img/inner-about/about/shape-1.png";
@@ -9,6 +11,21 @@ import ab_2 from "@/assets/img/about-yeco/about-3.png";
 import ab_3 from "@/assets/img/about-yeco/about-2.png";
 
 export default function AboutYecoArea() {
+  const { t, isRTL } = useTranslation();
+
+  // RTL 模式下 greeting 标签位置调整
+  const greetingStyle: React.CSSProperties = isRTL ? {
+    left: 'auto',
+    right: '20px',
+  } : {};
+
+  // RTL 模式下箭头图片水平翻转并调整位置
+  const shapeStyle: React.CSSProperties = isRTL ? {
+    transform: 'scaleX(-1)',
+    left: '5%',
+    right: 'auto',
+  } : {};
+
   return (
     <div className="ab-about-area ab-about-mt pb-90 z-index-5" style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
       <div className="container container-1480">
@@ -46,14 +63,12 @@ export default function AboutYecoArea() {
         <div id="about-info" className="row">
           <div className="col-xxl-9">
             <div className="ab-about-content p-relative">
-              <span>
+              <span style={greetingStyle}>
                 <Hand />
-                你好！
+                {t.about.intro.greeting}
               </span>
               <p className="tp-dropcap tp_fade_bottom">
-                YECO是一家专注于香水包装设计的公司，我们深耕香水行业多年，
-                汇聚了资深设计师、趋势研究员和品牌策略专家。我们相信，
-                每一款香水都值得拥有能够传递其灵魂的包装设计。
+                {t.about.intro.paragraph}
               </p>
             </div>
           </div>
@@ -64,12 +79,13 @@ export default function AboutYecoArea() {
               <div className="col-xl-5 col-lg-5 col-md-4 mb-40">
                 <div className="ab-about-category-title-box p-relative">
                   <h4 className="ab-about-category-title">
-                    服务范围 <br />
+                    {t.about.intro.servicesTitle} <br />
                   </h4>
                   <Image
                     className="ab-about-shape-1 d-none d-md-block"
                     src={shape}
                     alt="shape"
+                    style={shapeStyle}
                   />
                 </div>
               </div>
@@ -78,10 +94,9 @@ export default function AboutYecoArea() {
                   <div className="col-xl-6 col-lg-6 col-md-6 mb-40">
                     <div className="ab-about-category-list category-space-1 tp_fade_bottom">
                       <ul>
-                        <li>趋势研究报告</li>
-                        <li>包装结构设计</li>
-                        <li>瓶身造型设计</li>
-                        <li>礼盒套装设计</li>
+                        {t.about.intro.services.map((service, index) => (
+                          <li key={index}>{service}</li>
+                        ))}
                       </ul>
                     </div>
                   </div>

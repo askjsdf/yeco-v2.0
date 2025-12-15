@@ -1,35 +1,18 @@
+'use client';
 import React from "react";
 import CounterItem from "../counter/counter-item";
 import { Leaf } from "../svg";
-
-const counter_data = [
-  {
-    id: 1,
-    title: "完成项目",
-    count: 500,
-    text: "+",
-  },
-  {
-    id: 2,
-    title: "行业经验",
-    count: 10,
-    text: "年+",
-  },
-  {
-    id: 3,
-    title: "合作品牌",
-    count: 50,
-    text: "+",
-  },
-  {
-    id: 4,
-    title: "客户满意度",
-    count: 98,
-    text: "%",
-  },
-];
+import { useTranslation } from "@/i18n/hooks/useTranslation";
 
 export default function FunFactYeco() {
+  const { t } = useTranslation();
+
+  const counter_data = t.about.funFact.items.map((item, index) => ({
+    id: index + 1,
+    title: item.label,
+    count: item.count,
+    text: item.suffix,
+  }));
   return (
     <div className="ab-funfact-area pb-40" style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
       <div className="container container-1480">
@@ -38,10 +21,10 @@ export default function FunFactYeco() {
             <div className="ab-funfact-title-box">
               <span className="ab-inner-subtitle mb-25">
                 <Leaf />
-                数据亮点
+                {t.about.funFact.subtitle}
               </span>
               <h4 className="ab-inner-funfact-title tp_title_anim">
-                YECO <br /> 成长历程
+                {t.about.funFact.title} <br /> {t.about.funFact.titleLine2}
               </h4>
             </div>
           </div>

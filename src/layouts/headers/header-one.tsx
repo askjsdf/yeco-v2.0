@@ -3,9 +3,13 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import HeaderMenus from "./header-menus";
 import useStickyHeader from "@/hooks/use-sticky-header";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { languageConfig, languages, Language } from "@/i18n/config";
 
 const HeaderOne = () => {
   const { isSticky, headerRef, headerFullWidth } = useStickyHeader(20);
+  const { language, setLanguage } = useLanguage();
+
   useEffect(() => {
     headerFullWidth();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -45,19 +49,35 @@ const HeaderOne = () => {
                       <line x1="2" y1="12" x2="22" y2="12"></line>
                       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                     </svg>
-                    <button className="lang-item active">中文</button>
-                    <button className="lang-item">English</button>
-                    <button className="lang-item">العربية</button>
+                    {languages.map((lang) => (
+                      <button
+                        key={lang}
+                        className={`lang-item ${language === lang ? 'active' : ''}`}
+                        onClick={() => setLanguage(lang)}
+                      >
+                        {languageConfig[lang].nativeName}
+                      </button>
+                    ))}
                   </div>
 
-                  {/* Mobile Language Switcher - 只显示当前语言 */}
+                  {/* Mobile Language Switcher - 下拉选择 */}
                   <div className="language-switcher-mobile d-xl-none">
                     <svg className="lang-globe-icon-mobile" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cy="12" r="10"></circle>
                       <line x1="2" y1="12" x2="22" y2="12"></line>
                       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                     </svg>
-                    <button className="lang-item-mobile active">中文</button>
+                    <select
+                      className="lang-select-mobile"
+                      value={language}
+                      onChange={(e) => setLanguage(e.target.value as Language)}
+                    >
+                      {languages.map((lang) => (
+                        <option key={lang} value={lang}>
+                          {languageConfig[lang].nativeName}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
               </div>

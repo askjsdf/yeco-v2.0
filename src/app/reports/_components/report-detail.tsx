@@ -21,7 +21,11 @@ import ContactTwo from "@/components/contact/contact-two";
 import { charAnimation, fadeAnimation } from "@/utils/title-animation";
 
 // data
-import { getReportBySlug } from "../_data/reports-data";
+import { getLocalizedReportBySlug } from "../_data/reports-data";
+
+// i18n
+import { useTranslation } from "@/i18n/hooks/useTranslation";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 // Props 接口 - 支持从 App Router 传入 slug
 interface ReportDetailPageProps {
@@ -31,7 +35,7 @@ interface ReportDetailPageProps {
 // ==================== 报告内容渲染组件 ====================
 // 自动根据 slug 加载 _content 目录下对应的报告组件
 // 新建报告只需在 _content 目录创建对应文件夹即可，无需修改此文件
-const ReportContentRenderer = ({ slug, report }: { slug: string; report: ReturnType<typeof getReportBySlug> }) => {
+const ReportContentRenderer = ({ slug, report, loadingText }: { slug: string; report: ReturnType<typeof getLocalizedReportBySlug>; loadingText: string }) => {
   // 使用 useMemo 缓存动态组件，避免重复创建
   const DynamicReportContent = useMemo(() => {
     return dynamic(
@@ -44,7 +48,7 @@ const ReportContentRenderer = ({ slug, report }: { slug: string; report: ReturnT
                 <div className="row justify-content-center">
                   <div className="col-xl-10">
                     <div className="report-intro mb-60">
-                      <h3 style={{ marginBottom: '30px', fontSize: '32px' }}>报告简介</h3>
+                      <h3 style={{ marginBottom: '30px', fontSize: '32px' }}>Report Introduction</h3>
                       <p style={{ fontSize: '18px', lineHeight: 1.8, color: '#666' }}>
                         {report?.description}
                       </p>
@@ -60,11 +64,11 @@ const ReportContentRenderer = ({ slug, report }: { slug: string; report: ReturnT
                       }}
                     >
                       <p style={{ fontSize: '24px', color: '#999', marginBottom: '20px' }}>
-                        报告内容区域
+                        Report Content Area
                       </p>
                       <p style={{ color: '#bbb' }}>
-                        此处将展示报告的详细内容<br/>
-                        包括数据图表、分析结论、设计案例等
+                        Detailed report content will be displayed here<br/>
+                        Including data charts, analysis conclusions, design cases, etc.
                       </p>
                     </div>
                   </div>
@@ -78,12 +82,12 @@ const ReportContentRenderer = ({ slug, report }: { slug: string; report: ReturnT
         ssr: false,
         loading: () => (
           <div style={{ padding: '100px', textAlign: 'center' }}>
-            加载报告内容...
+            {loadingText}
           </div>
         )
       }
     );
-  }, [slug, report?.description]);
+  }, [slug, report?.description, loadingText]);
 
   return <DynamicReportContent />;
 };
@@ -91,9 +95,11 @@ const ReportContentRenderer = ({ slug, report }: { slug: string; report: ReturnT
 const ReportDetailPage = ({ slug: propSlug }: ReportDetailPageProps) => {
   // 优先使用 props 传入的 slug
   const slug = propSlug;
+  const { t } = useTranslation();
+  const { language } = useLanguage();
 
-  // 获取当前报告数据
-  const report = slug ? getReportBySlug(slug as string) : null;
+  // 获取当前报告数据（本地化）
+  const report = slug ? getLocalizedReportBySlug(slug as string, language) : null;
 
   useEffect(() => {
     document.body.classList.add("tp-smooth-scroll");
@@ -117,7 +123,7 @@ const ReportDetailPage = ({ slug: propSlug }: ReportDetailPageProps) => {
         <HeaderOne />
         <main>
           <div className="container" style={{ padding: '200px 0', textAlign: 'center' }}>
-            <h2>加载中...</h2>
+            <h2>{t.reportDetail.loading}</h2>
           </div>
         </main>
         <FooterFour />
@@ -133,7 +139,7 @@ const ReportDetailPage = ({ slug: propSlug }: ReportDetailPageProps) => {
       <main style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
         {/* ==================== REPORT CONTENT ==================== */}
         {/* 自动加载 _content/{slug} 目录下的报告组件 */}
-        {slug && <ReportContentRenderer slug={slug} report={report} />}
+        {slug && <ReportContentRenderer slug={slug} report={report} loadingText={t.reportDetail.loadingContent} />}
 
         {/* 返回按钮 */}
         <div style={{ textAlign: 'center', padding: '60px 0', background: '#000' }}>
@@ -149,7 +155,7 @@ const ReportDetailPage = ({ slug: propSlug }: ReportDetailPageProps) => {
               fontWeight: 600,
             }}
           >
-            返回报告列表
+            {t.reportDetail.backToList}
           </Link>
         </div>
 
@@ -184,9 +190,9 @@ const ReportDetailPage = ({ slug: propSlug }: ReportDetailPageProps) => {
             <div className="row">
               <div className="col-xl-12">
                 <div className="tm-hero-content">
-                  <span className="tm-hero-subtitle" style={{ marginBottom: '30px', display: 'block' }}>YECO Studio</span>
+                  <span className="tm-hero-subtitle" style={{ marginBottom: '30px', display: 'block' }}>{t.reportDetail.contact.subtitle}</span>
                   <h4 className="tm-hero-title-big tp-char-animation contact-title" style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
-                    建立连结，共创非凡
+                    {t.reportDetail.contact.title}
                   </h4>
                 </div>
               </div>

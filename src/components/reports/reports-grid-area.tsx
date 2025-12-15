@@ -1,23 +1,28 @@
 'use client';
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { useIsotop } from "@/hooks/use-isotop";
 import Image from "next/image";
 import Link from "next/link";
 import usePagination from "@/hooks/use-pagination";
 import PaginationCom from "../ui/pagination";
-import { getAllReports, categoryClassMap, IReportItem, ReportCategory } from "@/data/reports-data";
-
-// 获取所有报告数据
-const allReports = getAllReports();
+import { getLocalizedAllReports, categoryClassMap, ILocalizedReportItem, ReportCategoryKey } from "@/data/reports-data";
+import { useTranslation } from "@/i18n/hooks/useTranslation";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 // 为每个报告生成筛选用的 class
-const getFilterClasses = (category: ReportCategory): string => {
-  return categoryClassMap[category] || "";
+const getFilterClasses = (categoryKey: ReportCategoryKey): string => {
+  return categoryClassMap[categoryKey] || "";
 };
 
 export default function ReportsGridArea() {
+  const { t } = useTranslation();
+  const { language } = useLanguage();
   const { initIsotop, isotopContainer } = useIsotop();
-  const { currentItems, handlePageClick, pageCount } = usePagination<IReportItem>(allReports, 9);
+
+  // 获取本地化的报告数据
+  const allReports = useMemo(() => getLocalizedAllReports(language), [language]);
+
+  const { currentItems, handlePageClick, pageCount } = usePagination<ILocalizedReportItem>(allReports, 9);
   const [isLayoutReady, setIsLayoutReady] = useState(false);
   const gridSectionRef = useRef<HTMLDivElement>(null);
 
@@ -50,16 +55,16 @@ export default function ReportsGridArea() {
           <div className="col-xl-8">
             <div className="portfolio-filter masonary-menu d-flex justify-content-center mb-60">
               <button data-filter="*" className="active">
-                <span>全部</span>
+                <span>{t.reports.categories.all}</span>
               </button>
               <button data-filter=".cat1">
-                <span>消费者洞察</span>
+                <span>{t.reports.categories.trendInsight}</span>
               </button>
               <button data-filter=".cat2">
-                <span>设计趋势</span>
+                <span>{t.reports.categories.consumerUnderstanding}</span>
               </button>
               <button data-filter=".cat3">
-                <span>市场分析</span>
+                <span>{t.reports.categories.caseAnalysis}</span>
               </button>
             </div>
           </div>
@@ -70,7 +75,7 @@ export default function ReportsGridArea() {
           {currentItems.map((item) => (
             <div
               key={item.id}
-              className={`col-xl-4 col-lg-6 col-md-6 grid-item ${getFilterClasses(item.category)}`}
+              className={`col-xl-4 col-lg-6 col-md-6 grid-item ${getFilterClasses(item.categoryKey)}`}
             >
               <div className="tp-project-5-2-thumb mb-30 p-relative not-hide-cursor" data-cursor="查看<br>详情">
                 <Link href={`/reports/${item.slug}`} className="cursor-hide">
@@ -92,6 +97,18 @@ export default function ReportsGridArea() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       style={{ objectFit: 'cover' }}
                     />
+                    {/* 从下到上的黑色渐变蒙版，提高文字可读性 */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: '60%',
+                        background: 'linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 100%)',
+                        pointerEvents: 'none',
+                      }}
+                    />
                   </div>
                   <div className="tp-project-5-2-category tp_fade_anim">
                     <span>{item.category}</span>
@@ -100,7 +117,7 @@ export default function ReportsGridArea() {
                     <span className="tp-project-5-2-meta">{item.year}.{item.month}</span>
                     <h4 className="tp-project-5-2-title-sm">{item.title}</h4>
                     {item.subtitle && (
-                      <p className="tp-project-5-2-subtitle" style={{ fontSize: '14px', opacity: 0.8, marginTop: '5px' }}>
+                      <p className="tp-project-5-2-subtitle" style={{ fontSize: '14px', color: '#ffffff', marginTop: '5px' }}>
                         {item.subtitle}
                       </p>
                     )}

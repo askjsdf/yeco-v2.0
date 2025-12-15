@@ -1,9 +1,12 @@
+"use client";
 import React from "react";
-import AboutYecoMain from "@/pages/about/about-yeco";
+import dynamic from "next/dynamic";
 
-export const metadata = {
-  title: "关于YECO - YECO",
-};
+// 动态导入客户端组件，禁用 SSR 以避免 LanguageProvider 问题
+const AboutYecoMain = dynamic(
+  () => import("@/pages/about/about-yeco"),
+  { ssr: false }
+);
 
 export default function AboutYecoPage() {
   return <AboutYecoMain />;

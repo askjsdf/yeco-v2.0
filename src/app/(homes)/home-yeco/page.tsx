@@ -1,9 +1,12 @@
+"use client";
 import React from "react";
-import HomeYecoMain from "@/pages/homes/home-yeco";
+import dynamic from "next/dynamic";
 
-export const metadata = {
-  title: "YECO - 香水包装设计",
-};
+// 动态导入客户端组件，禁用 SSR 以避免 LanguageProvider 问题
+const HomeYecoMain = dynamic(
+  () => import("@/pages/homes/home-yeco"),
+  { ssr: false }
+);
 
 export default function HomeYecoPage() {
   return <HomeYecoMain />;

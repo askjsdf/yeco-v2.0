@@ -19,14 +19,13 @@ import FooterFour from "@/layouts/footers/footer-four";
 // YECO About 组件 (中文版)
 import AboutYecoHero from "@/components/about-yeco/about-yeco-hero";
 import AboutYecoArea from "@/components/about-yeco/about-yeco-area";
-import TeamOne from "@/components/team/team-one";
 import FunFactYeco from "@/components/about-yeco/fun-fact-yeco";
 import AwardYeco from "@/components/about-yeco/award-yeco";
+import MissionOne from "@/components/mission/mission-one";
 
 // animation
 import { charAnimation, fadeAnimation, titleAnimation } from "@/utils/title-animation";
 import { hoverBtn } from "@/utils/hover-btn";
-import { teamMarqueAnim } from "@/utils/scroll-marque";
 
 const AboutYecoMain = () => {
   useScrollSmooth();
@@ -35,7 +34,6 @@ const AboutYecoMain = () => {
     const timer = setTimeout(() => {
       charAnimation();
       titleAnimation();
-      teamMarqueAnim();
       fadeAnimation();
       hoverBtn();
     }, 100);
@@ -58,9 +56,9 @@ const AboutYecoMain = () => {
             <AboutYecoArea />
             {/* about area */}
 
-            {/* team area */}
-            <TeamOne spacing="" />
-            {/* team area */}
+            {/* mission area - 大图+文字描述 */}
+            <MissionOne />
+            {/* mission area */}
 
             {/* fun fact area */}
             <FunFactYeco />

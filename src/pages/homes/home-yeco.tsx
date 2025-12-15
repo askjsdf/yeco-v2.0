@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import useScrollSmooth from "@/hooks/use-scroll-smooth";
 import { ScrollSmoother, ScrollTrigger, SplitText } from "@/plugins";
 import { useGSAP } from "@gsap/react";
+import { useTranslation } from "@/i18n/hooks/useTranslation";
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
@@ -43,6 +44,7 @@ import FooterFour from "@/layouts/footers/footer-four";
 
 const HomeThirteenMain = () => {
   useScrollSmooth();
+  const { t } = useTranslation();
 
   useEffect(() => {
     document.body.classList.add("tp-smooth-scroll");
@@ -97,7 +99,7 @@ const HomeThirteenMain = () => {
 
             {/* ==================== 7. CONTACT ==================== */}
             {/* Get in Touch + Contact Form */}
-            <div className="tm-hero-area tm-hero-ptb p-relative" style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
+            <div id="contact" className="tm-hero-area tm-hero-ptb p-relative" style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
               <style jsx>{`
                 .contact-title {
                   font-size: 120px;
@@ -126,9 +128,9 @@ const HomeThirteenMain = () => {
                 <div className="row">
                   <div className="col-xl-12">
                     <div className="tm-hero-content">
-                      <span className="tm-hero-subtitle" style={{ marginBottom: '30px', display: 'block' }}>YECO Studio</span>
+                      <span className="tm-hero-subtitle" style={{ marginBottom: '30px', display: 'block' }}>{t.home.contact.subtitle}</span>
                       <h4 className="tm-hero-title-big tp-char-animation contact-title" style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
-                        建立连结，共创非凡
+                        {t.home.contact.title}
                       </h4>
                     </div>
                   </div>

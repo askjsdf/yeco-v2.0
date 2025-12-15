@@ -1,15 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Slider from "react-slick";
 import Link from "next/link";
 import "slick-carousel/slick/slick.css";
 import { DownArrow } from "../svg";
 import { SlickNextArrow, SlickPrevArrow } from "../slick-arrow";
-import { getFeaturedReports, IReportItem } from "@/data/reports-data";
-
-// 获取精选报告数据
-const featuredReports = getFeaturedReports();
+import { getLocalizedFeaturedReports, ILocalizedReportItem } from "@/data/reports-data";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 // 主轮播设置
 const slider_setting_one = {
@@ -17,6 +15,7 @@ const slider_setting_one = {
   slidesToScroll: 1,
   fade: true,
   speed: 1000,
+  rtl: false, // 强制 LTR 模式
   nextArrow: <SlickNextArrow />,
   prevArrow: <SlickPrevArrow />,
 };
@@ -30,6 +29,7 @@ const slider_setting_two = {
   focusOnSelect: true,
   centerPadding: "0",
   speed: 600,
+  rtl: false, // 强制 LTR 模式
   nextArrow: <SlickNextArrow />,
   prevArrow: <SlickPrevArrow />,
   responsive: [
@@ -82,9 +82,23 @@ export default function ReportsBannerSlider() {
   const [slider1, setSlider1] = useState<any>(null);
   const [slider2, setSlider2] = useState<any>(null);
   const [sliderIndex, setSliderIndex] = useState<number>(1);
+  const { language, isRTL } = useLanguage();
+
+  // 获取本地化的精选报告数据
+  const featuredReports = useMemo(() => getLocalizedFeaturedReports(language), [language]);
 
   return (
-    <div className="tp-portfolio-11-area fix" style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
+    // 使用 dir="ltr" 属性覆盖 slick 的 [dir='rtl'] CSS 选择器
+    <div dir="ltr" className="tp-portfolio-11-area fix" style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
+      {/* 覆盖 slick RTL 样式，确保 slider 始终使用 LTR 布局 */}
+      <style jsx>{`
+        :global([dir='rtl'] .tp-portfolio-11-area .slick-slide) {
+          float: left !important;
+        }
+        :global([dir='rtl'] .tp-portfolio-11-area .slick-track) {
+          direction: ltr;
+        }
+      `}</style>
       <div className="tp-portfolio-11-slider-wrap p-relative">
         {/* 主轮播 - 大图背景 */}
         <TypedSlider
@@ -93,14 +107,29 @@ export default function ReportsBannerSlider() {
           ref={(slider: any) => setSlider1(slider)}
           className="tp-portfolio-11-slider-active"
         >
-          {featuredReports.map((item: IReportItem) => (
+          {featuredReports.map((item: ILocalizedReportItem) => (
             <div key={item.id}>
               <div
                 className="tp-portfolio-11-slider-bg pt-170 pb-150 d-flex align-items-end"
-                style={{ backgroundImage: `url(${item.bannerImage})` }}
+                style={{
+                  backgroundImage: `url(${item.bannerImage})`,
+                  position: 'relative',
+                }}
               >
+                {/* 黑色蒙版层 */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                    pointerEvents: 'none',
+                  }}
+                />
                 {/* 内容区域限制宽度，避免和右侧卡片重叠 */}
-                <div className="tp-portfolio-11-slider-content" style={{ maxWidth: '500px' }}>
+                <div className="tp-portfolio-11-slider-content" style={{ maxWidth: '500px', position: 'relative', zIndex: 1 }}>
                   <div className="tp-portfolio-11-slider-link">
                     <Link href={`/reports/${item.slug}`}>
                       <DownArrow />
@@ -127,8 +156,8 @@ export default function ReportsBannerSlider() {
 
         <div className="dddd"></div>
 
-        {/* 缩略图导航 */}
-        <div className="tp-portfolio-11-slider-nav-wrap z-index-5">
+        {/* 缩略图导航 - 确保定位不受RTL影响 */}
+        <div className="tp-portfolio-11-slider-nav-wrap z-index-5" style={{ left: 'auto' }}>
           <div
             className="slides-numbers d-none d-lg-flex d-flex align-items-center"
             style={{ display: "inline-block" }}
@@ -145,7 +174,7 @@ export default function ReportsBannerSlider() {
             afterChange={(index: number) => setSliderIndex(index + 1)}
             className="tp-portfolio-11-slider-nav-active d-none d-lg-block"
           >
-            {featuredReports.map((item: IReportItem) => (
+            {featuredReports.map((item: ILocalizedReportItem) => (
               <div key={item.id}>
                 <div
                   className="tp-portfolio-11-slider-nav-item p-relative"

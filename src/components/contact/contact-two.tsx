@@ -1,19 +1,10 @@
 'use client';
 import ContactForm from "../form/contact-form";
-import Social from "../social/social";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 export default function ContactTwo() {
   return (
     <div className="cn-contactform-area cn-contactform-style p-relative pb-100" style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
-      <div className="ab-2-hero-social-wrap d-none d-xl-block">
-        <div className="ab-2-hero-social">
-          <Social/>
-        </div>
-        <div className="ab-2-hero-social-text">
-          <span>Follow us</span>
-        </div>
-      </div>
       <div className="container">
         <div className="row align-items-start">
           <div className="col-xl-5 col-lg-5 d-none d-lg-block">

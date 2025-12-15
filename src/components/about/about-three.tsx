@@ -1,10 +1,13 @@
+'use client';
 import React from "react";
 import Link from "next/link";
 // internal imports
 import { ArrowBg, RightArrowTwo } from "../svg";
 import PerfumeBottle3D from "./perfume-bottle-3d";
+import { useTranslation } from "@/i18n/hooks/useTranslation";
 
 export default function AboutThree() {
+  const { t } = useTranslation();
 
   return (
     <div className="tp-about-3-area pt-120 pb-110" style={{ position: 'relative' }}>
@@ -17,11 +20,11 @@ export default function AboutThree() {
             <div className="tp-about-3-title-box">
               <span className="tp-section-subtitle-2 tp_fade_bottom">
                 <span className="tp-subtitle-text tp_text_invert">
-                  Design Philosophy
+                  {t.home.about.subtitle}
                 </span>
               </span>
               <h4 className="tp-section-title-90 tp_text_invert tp_fade_bottom">
-                美，本无国界
+                {t.home.about.title}
               </h4>
             </div>
           </div>
@@ -34,13 +37,13 @@ export default function AboutThree() {
           <div className="col-xl-6 col-lg-6 col-md-8">
             <div className="tp-about-3-content">
               <p className="mb-45 tp_fade_bottom">
-                创作，是沉醉于跨越山川与湖海的连接，是痴迷于历史与未来的共鸣。我们享受着将多元的文化，融合编织进生活的每一个瞬间，那种让隔阂消弥、让共鸣发生的时刻，是我们创作中最耀眼的光芒。
+                {t.home.about.paragraph1}
               </p>
               <p className="mb-45 tp_fade_bottom">
-                我们相信，最好的设计，是让全人类都能动容的语言。
+                {t.home.about.paragraph2}
               </p>
-              <Link className="tp-btn-black-2 tp_fade_bottom" href="/about-us">
-                About Us
+              <Link className="tp-btn-black-2 tp_fade_bottom" href="/about-yeco">
+                {t.home.about.cta}
                 <span className="p-relative">
                   <RightArrowTwo />
                   <ArrowBg />

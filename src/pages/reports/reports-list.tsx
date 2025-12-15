@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import React, { useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger, SplitText } from "@/plugins";
+import { useTranslation } from "@/i18n/hooks/useTranslation";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 // ==================== YECO REPORTS LIST PAGE ====================
@@ -22,6 +23,8 @@ import FooterFour from "@/layouts/footers/footer-four";
 import { charAnimation, fadeAnimation, zoomAnimation } from "@/utils/title-animation";
 
 const ReportsListMain = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     document.body.classList.add("tp-smooth-scroll");
     return () => {
@@ -53,14 +56,14 @@ const ReportsListMain = () => {
             <div className="row">
               <div className="col-xl-12">
                 <div className="tm-hero-content">
-                  <span className="tm-hero-subtitle" style={{ marginBottom: '30px', display: 'block' }}>YECO Studio</span>
+                  <span className="tm-hero-subtitle" style={{ marginBottom: '30px', display: 'block' }}>{t.reports.hero.subtitle}</span>
                   <h4 className="tm-hero-title tp-char-animation" style={{ fontSize: '120px' }}>
-                    深度趋势研究
+                    {t.reports.hero.title}
                   </h4>
                 </div>
                 <div className="tm-hero-text tp_title_anim">
                   <p>
-                    基于全球社交平台的消费者洞察，行业设计数据研究，揭示香水行业的最新趋势与设计方向。深入Reddit、Instagram、TikTok等平台用户声音，将海量数据转化为可落地的设计策略。
+                    {t.reports.hero.description}
                   </p>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { useTranslation } from "@/i18n/hooks/useTranslation";
 
 // award images
 import a_1 from "@/assets/img/home-01/award/award-1.png";
@@ -11,44 +12,7 @@ import a_5 from "@/assets/img/home-01/award/award-5.png";
 import a_6 from "@/assets/img/home-01/award/award-6.png";
 import { Leaf } from "../svg";
 
-const award_data = [
-  {
-    id: 1,
-    img: a_1,
-    title: "10年行业深耕经验",
-    date: "始于2014年",
-  },
-  {
-    id: 2,
-    img: a_2,
-    title: "跨国专业设计团队",
-    date: "跨国人才",
-  },
-  {
-    id: 3,
-    img: a_3,
-    title: "10000平方米生产基地",
-    date: "宁波总部",
-  },
-  {
-    id: 4,
-    img: a_4,
-    title: "全球合作品牌",
-    date: "遍布30+国家",
-  },
-  {
-    id: 5,
-    img: a_5,
-    title: "ISO质量管理体系认证",
-    date: "ISO 9001",
-  },
-  {
-    id: 6,
-    img: a_6,
-    title: "FSC环保材料认证",
-    date: "可持续发展",
-  },
-];
+const images = [a_1, a_2, a_3, a_4, a_5, a_6];
 
 // prop type
 type IProps = {
@@ -57,7 +21,15 @@ type IProps = {
 };
 
 const AwardYeco = ({cls="pt-125 pb-125", abStyle=false}: IProps) => {
+  const { t } = useTranslation();
   const [activeThumb, setActiveThumb] = React.useState(1);
+
+  const award_data = t.about.manufacturing.items.map((item, index) => ({
+    id: index + 1,
+    img: images[index],
+    title: item.title,
+    date: item.date,
+  }));
   return (
     <div className={`tp-award-area ${cls}`} style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>
       <div className="container container-1630">
@@ -74,7 +46,7 @@ const AwardYeco = ({cls="pt-125 pb-125", abStyle=false}: IProps) => {
               <div className="ab-award-title-sm">
                 <span>
                   <Leaf />
-                  制造实力
+                  {t.about.manufacturing.subtitle}
                 </span>
               </div>
             )}
