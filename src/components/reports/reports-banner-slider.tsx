@@ -82,7 +82,7 @@ export default function ReportsBannerSlider() {
   const [slider1, setSlider1] = useState<any>(null);
   const [slider2, setSlider2] = useState<any>(null);
   const [sliderIndex, setSliderIndex] = useState<number>(1);
-  const { language, isRTL } = useLanguage();
+  const { language } = useLanguage();
 
   // 获取本地化的精选报告数据
   const featuredReports = useMemo(() => getLocalizedFeaturedReports(language), [language]);

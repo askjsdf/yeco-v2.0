@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger, SplitText } from "@/plugins";
 import { useTranslation } from "@/i18n/hooks/useTranslation";
+import { useLanguage } from "@/i18n/LanguageContext";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 // ==================== YECO REPORTS LIST PAGE ====================
@@ -24,6 +25,7 @@ import { charAnimation, fadeAnimation, zoomAnimation } from "@/utils/title-anima
 
 const ReportsListMain = () => {
   const { t } = useTranslation();
+  const { language } = useLanguage();
 
   useEffect(() => {
     document.body.classList.add("tp-smooth-scroll");
@@ -48,7 +50,8 @@ const ReportsListMain = () => {
 
       <main>
         {/* ==================== REPORTS SLIDER ==================== */}
-        <ReportsBannerSlider />
+        {/* key={language} 强制在语言切换时完全重新挂载组件，避免 react-slick DOM 冲突 */}
+        <ReportsBannerSlider key={`banner-slider-${language}`} />
 
         {/* ==================== HERO SECTION ==================== */}
         <div className="tm-hero-area tm-hero-ptb" style={{ fontFamily: 'var(--tp-ff-noto-serif-sc), serif' }}>

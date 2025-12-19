@@ -38,11 +38,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  // 保存语言偏好到 localStorage
+  // 保存语言偏好到 localStorage 并刷新页面
+  // 刷新页面可以避免第三方库（react-slick, react-fast-marquee 等）的 DOM 操作与 React 状态更新冲突
   const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
+    if (lang === language) return; // 相同语言不处理
     localStorage.setItem('yeco-language', lang);
-    applyLanguage(lang);
+    // 刷新页面以应用新语言，避免 DOM 冲突
+    window.location.reload();
   };
 
   const dir = languageConfig[language].dir;
